@@ -8,9 +8,17 @@ import { IoMdContact } from "react-icons/io";
 
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from 'next/navigation'
+import { VscAccount } from "react-icons/vsc";
+
 
 
 const Hero = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   const router = useRouter()
 
   const [nav, setNav] = useState(false);
@@ -36,11 +44,14 @@ const Hero = () => {
   </Link>
         </div>
         <div className="hidden lg:inline">
-          <ul className="flex justify-center hover:cursor-pointer">
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5 ">
-              Vehicle
+          <ul className="flex justify-center hover:cursor-pointer text-base text-gray-700">
+            <li className="font-GothamSSm py-1 px-3 hover:rounded hover:bg-black/5 "  onMouseEnter={toggleMenu}
+             onMouseLeave={toggleMenu}>
+              Vehicles
             </li>
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+            
+            <li className=" py-1 px-3 hover:rounded hover:bg-black/5"  onMouseEnter={toggleMenu}
+        onMouseLeave={toggleMenu}>
               Energy
             </li>
             <li className="py-1 px-3 hover:rounded hover:bg-black/5">
@@ -55,21 +66,21 @@ const Hero = () => {
           </ul>
         </div>
         <div className="hidden lg:inline">
-          <ul className="flex justify-center hover:cursor-pointer">
+          <ul className="flex justify-center hover:cursor-pointer ">
             <Link href="/">
-              <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+              <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <RxQuestionMarkCircled className="w-6 h-6" />
               </li>
             </Link>
             
             <Link href="/">
-               <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+               <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <CiGlobe className="w-6 h-6" />
                </li>
             </Link>
             
             <Link href="/">
-               <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+               <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <IoMdContact className="w-6 h-6" /> 
                </li>
             </Link>
@@ -78,7 +89,7 @@ const Hero = () => {
         </div>
 
   <div className="absolute top-40 left-2/4 transform -translate-x-1/2 -translate-y-1/2">
-  <h1 className="text-5xl font-light p-2 ml-8">Model Y</h1>
+  <h1 className="text-5xl font-light p-2 ml-8 font-GothamSSm-Book_web.woff2 ">Model Y</h1>
   <h3 className="text-2xl font-semibold ml-10 text-ellipsis">From $29,490*</h3>
   <p className="font-light text-sm">After Federal Tax Credit & Est. Gas Savings</p>
 </div>
@@ -103,78 +114,54 @@ const Hero = () => {
             <TfiClose onClick={handleNav} className="rounded p-1 hover:bg-black/5" size={28} />
           </div>
 
-          <ul className="pt-8 px-6">
+          <ul className="pt-8 px-6 mr-32 bg-white">
             <Link href="/">
             <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Model Shop
+                Vehicle
             </li>
             </Link>
             
             <Link href="/">
             <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Model 3
+                 Energy
             </li>
             </Link>
             
             <Link href="/">
             <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Model X
+                Charging
             </li>
             </Link>
             
             <Link href="/">
             <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Model Y
+                 Discover
             </li>
             </Link>
             
             <Link href="/">
             <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                 Solar Roof
-            </li>
-            </Link>
-            
-            <Link href="/">
-            <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Solar Panels
-            </li>
-            </Link>
-            
-            <Link href="/">
-            <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Existing Inventory
-            </li>
-            </Link>
-            
-            <Link href="/">
-            <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Used Inventory
-            </li>
-            </Link>
-            <Link href="/">
-            <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                 Trade-In
+                Shop
             </li>
             </Link>
 
             <Link href="/">
             <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                 Test Drive
+                Support
             </li>
             </Link>
             
             <Link href="/">
-            <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Insurance
-            </li>
+               <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
+              <CiGlobe className="w-6 h-6" />
+               </li>
             </Link>
-            
+
             <Link href="/">
-            <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
-                Powerwall
-            </li>
+               <li className="py-3 pl-3 hover:rounded hover:bg-black/5">
+              <VscAccount className="w-6 h-6" />
+               </li>
             </Link>
-            
           </ul>
         </div>
       </div>
@@ -194,7 +181,7 @@ const Hero = () => {
         
       </div>
 
-      <p className="absolute bottom-20 font-light text-sm left-1/3">*Price before incentives is $44,990, excluding taxes and fees. Subject to change.</p>
+      <p className="absolute bottom-20 font-light text-sm left-1/3 ">*Price before incentives is $44,990, excluding taxes and fees. Subject to change.</p>
       <Link href="/">
          <p className="absolute bottom-16 font-light text-sm left-1/2 -ml-20 underline underline-offset-4 ">Learn about est. gas savings.</p>
       </Link>

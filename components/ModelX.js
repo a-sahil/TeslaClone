@@ -6,7 +6,7 @@ const ModelX = () => {
   const router = useRouter();
   return (
     <div>
-      <div className="relative bottom-12">
+      <div className="relative bottom-12 ">
        <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/h_1800,w_2880,c_fit,f_auto,q_auto:best/Homepage-Model-X-Desktop-LHD" alt="bg-img" className=" h-screen w-full object-cover" />
       </div>
 

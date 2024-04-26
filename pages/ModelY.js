@@ -44,6 +44,13 @@ const ModelY = () => {
       <p className="text-sm text-[#5C5E62]">0-60 mph</p>
       </div>
 
+  <div className="flex justify-between mt-4">
+    <button className="text-[#5C5E62] font-GothamSSm">Cash</button>
+    <button className="text-[#5C5E62] ">Lease</button>
+    <button className="text-[#5C5E62] ">Finance</button>
+    
+  </div>
+  <hr className="border-t-2 border-black" />
       
       
     </div>
