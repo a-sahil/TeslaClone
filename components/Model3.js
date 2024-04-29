@@ -7,7 +7,7 @@ const Model3 = () => {
   return (
     <div>
       <div>
-      <img src="https://digitalassets-secure.tesla.com/image/upload/f_auto,q_auto/xufyfcvqhmq36szytod7.jpg" alt="bg-img" className="h-screen w-full object-cover" />
+      <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-3-Desktop-LHD-v2.jpg" alt="bg-img" className="h-screen w-full object-cover" />
 
       </div>
 
@@ -26,7 +26,7 @@ const Model3 = () => {
           </button>
         
         
-          <button className="rounded-md bg-[#171A20A6] text-white w-96 lg:w-64 h-10 lg:mx-4 mt-2" onClick={() => router.push('/DemoDrive')}>
+          <button className="rounded-md bg-[#171A20A6] text-white w-96 lg:w-64 h-10 lg:mx-4 mt-2" onClick={() => router.push('/DemoDrive3')}>
             Demo Drive
           </button>
         

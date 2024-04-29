@@ -8,70 +8,213 @@ import { IoMdContact } from "react-icons/io";
 
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from 'next/navigation'
+import todoImage from "../public/model-s.jpg";
+import calendarImage from  "../public/model-x.jpg";
+import remindersImage from   "../public/model-y.jpg";
+import planningImage from  "../public/model-4.jpg";
 
+const navItems = [
+  {
+    label: "Vehicles",
+    link: "#",
+    children: [
+      {
+        label: "Model S",
+        link: "#",
+        iconImage:todoImage
+      },
+      {
+        label: "Model X",
+        link: "#",
+        iconImage: calendarImage
+      },
+      {
+        label: "Model Y",
+        link: "#",
+        iconImage:remindersImage
+      },
+      {
+        label: "Model 3",
+        link: "#",
+        iconImage: planningImage
+      }
+    ]
+  },
+  {
+    label: "Energy",
+    link: "#",
+    children: [
+      {
+        label: "Solar panel",
+        link: "#"
+      },
+      {
+        label: "Solar roof",
+        link: "#"
+      },
+      {
+        label: "Powerwall",
+        link: "#"
+      },
+      {
+        label: "Megapack",
+        link: "#"
+      }
+    ]
+  },
+  {
+    label: "Charging",
+    link: "#",
+    children: [
+      {
+        label: "Charging",
+        link: "#"
+      },
+      {
+        label: "Home Charging",
+        link: "#"
+      },
+      {
+        label: "Super Charging",
+        link: "#"
+      }
+    ]
+  },
+  {
+    label: "Discover",
+    link: "#",
+    children: [
+      {
+        label: "Resources",
+        link: "#"
+      },
+      {
+        label: "Demo Drive",
+        link: "#"
+      },
+      {
+        label: "Insurance",
+        link: "#"
+      },
+      {
+        label: "Video Guides",
+        link: "#"
+      },
+      {
+        label: "Custom Stories",
+        link: "#"
+      },
+      {
+        label: "Events",
+        link: "#"
+      },
+    ]
+  },
+  {
+    label: "Shop",
+    link: "#",
+    children: [
+      {
+        label: "Charging",
+        link: "#"
+      },
+      {
+        label: "Vehicles Accessories",
+        link: "#"
+      },
+      {
+        label: "Apparel",
+        link: "#"
+      },
+      {
+        label: "Life Style",
+        link: "#"
+      }
+    ]
+  }
+];
 
 const DemoDrive = () => {
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(null);
+
+  const toggleMenu = (index) => {
+    setIsOpen(isOpen === index ? null : index);
+  };
   return (
     
       <div>
         {/* for Navbar */}
-        <div className="absolute top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm ">
+        <div className=" top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm">
         <div>
-        <Link href="https://www.tesla.com/">
-      
-      <Image
-        src="/tesla.svg"
-        alt="Tesla Logo"
-        width={120}
-        height={100}
-        className="relative "
-      />
-    
-  </Link>
+          <Link href="https://www.tesla.com/">
+            <Image
+              src="/tesla.svg"
+              alt="Tesla Logo"
+              width={120}
+              height={100}
+              className="relative"
+            />
+          </Link>
         </div>
-        <div className="hidden lg:inline">
-          <ul className="flex justify-center hover:cursor-pointer">
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5 ">
-              Vehicle
-            </li>
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5">
-              Energy
-            </li>
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5">
-              Charging
-            </li>
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5">
-              Discovery
-            </li>
-            <li className="py-1 px-3 hover:rounded hover:bg-black/5">
-              Shop
-            </li>
+        <div className="hidden lg:inline ">
+          <ul className="relative flex justify-center left-48 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
+            {navItems.map((item, index) => (
+              <li
+                key={index}
+                className="relative py-1 px-3 hover:rounded hover:bg-black/5"
+                onMouseEnter={() => toggleMenu(index)}
+                onMouseLeave={() => toggleMenu(null)}
+              >
+                {item.label}
+                {index === isOpen && isOpen !== null && (
+                  <div className="absolute flex top-full w-auto mt-2 bg-white border border-gray-200 rounded shadow-md">
+                    <ul className="">
+                      {item.children && item.children.map((child, childIndex) => (
+                        <li key={childIndex} className="px-4 py-2">
+                          {child.iconImage && (
+                            <Image
+                              src={child.iconImage}
+                              alt={child.label}
+                              width={100}
+                              height={70}
+                            />
+                          )}
+
+                          {child.label}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
+
         <div className="hidden lg:inline">
-          <ul className="flex justify-center hover:cursor-pointer">
+          <ul className="flex justify-center relative left-[27rem] hover:cursor-pointer">
             <Link href="/">
-              <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+              <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <RxQuestionMarkCircled className="w-6 h-6" />
               </li>
             </Link>
             
             <Link href="/">
-               <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+               <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <CiGlobe className="w-6 h-6" />
                </li>
             </Link>
             
             <Link href="/">
-               <li className="py-1 px-3 hover:rounded hover:bg-black/5">
+               <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <IoMdContact className="w-6 h-6" /> 
                </li>
             </Link>
             
           </ul>
         </div>
-      </div>
+        <div/>
     
 
     <div>
@@ -160,6 +303,7 @@ const DemoDrive = () => {
       
         
 
+    </div>
     </div>
   )
 }

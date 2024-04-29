@@ -7,12 +7,11 @@ import { CiGlobe } from "react-icons/ci";
 import { IoMdContact } from "react-icons/io";
 
 import { TfiClose } from "react-icons/tfi";
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 import todoImage from "../public/model-s.jpg";
 import calendarImage from  "../public/model-x.jpg";
 import remindersImage from   "../public/model-y.jpg";
 import planningImage from  "../public/model-4.jpg";
-
 
 const navItems = [
   {
@@ -135,24 +134,18 @@ const navItems = [
   }
 ];
 
-
-const Hero = () => {
+const DemoDrive3 = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(null);
 
   const toggleMenu = (index) => {
     setIsOpen(isOpen === index ? null : index);
   };
-
-  const [nav, setNav] = useState(false);
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
   return (
-    <div>
-      <div className="absolute top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm">
+    
+      <div>
+        {/* for Navbar */}
+        <div className=" top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm">
         <div>
           <Link href="https://www.tesla.com/">
             <Image
@@ -165,11 +158,11 @@ const Hero = () => {
           </Link>
         </div>
         <div className="hidden lg:inline ">
-          <ul className="relative flex justify-center left-6 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
+          <ul className="relative flex justify-center left-48 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="relative py-1 px-4 hover:rounded hover:bg-black/5"
+                className="relative py-1 px-3 hover:rounded hover:bg-black/5"
                 onMouseEnter={() => toggleMenu(index)}
                 onMouseLeave={() => toggleMenu(null)}
               >
@@ -200,7 +193,7 @@ const Hero = () => {
         </div>
 
         <div className="hidden lg:inline">
-          <ul className="flex justify-center  hover:cursor-pointer">
+          <ul className="flex justify-center relative left-[27rem] hover:cursor-pointer">
             <Link href="/">
               <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <RxQuestionMarkCircled className="w-6 h-6" />
@@ -221,64 +214,98 @@ const Hero = () => {
             
           </ul>
         </div>
+        <div/>
+    
 
-  <div className="absolute top-40 left-2/4 transform -translate-x-1/2 -translate-y-1/2">
-  <h1 className="text-5xl font-light p-2 ml-8">Model Y</h1>
-  <h3 className="text-2xl font-semibold ml-10 text-ellipsis">From $29,490*</h3>
-  <p className="font-light text-sm">After Federal Tax Credit & Est. Gas Savings</p>
-</div>
-
-
-
-        <div className="lg:hidden">
-          <button className="inline-flex items-center rounded-md py-2 px-4 p-2 text-sm font-medium bg-black/5 shadow-sm hover:bg-black/10" onClick={handleNav}>
-            Menu
-          </button>
+    <div>
+      <div className="absolute top-[16%] left-[28%]">
+      <h1 className="text-4xl font-semibold ">Demo Drive Model 3</h1>
+      <p className="text-light pb-4 pt-4">Experience Full Self-Driving (Supervised), Learn About Charging and Get All Your 
+      Questions Answered
+      </p>
+      <h2 className="text-2xl font-semibold pt-6">Find Location and Time</h2>
+      <p>Zip Code: Enter Zip Code</p>
+      </div>
+      
+    <div className= "absolute top-[50%] left-[28%] ">
+      <h1 className="text-3xl font-bold  text-gray-800 mb-4 ">Contact Information</h1>
+      <form  className="space-y-6 ">
+        <div className="flex flex-row space-x-8">
+        <div>
+          <label htmlFor="firstName" className="block font-bold mb-2 text-[#5C5E62] font-sans">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            className=" border rounded-md py-2 px-14  bg-[#F4F4F4]"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="lastName" className="block font-bold mb-2 text-[#5C5E62] font-sans">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            className="border rounded-md py-2 px-14 bg-[#F4F4F4]"
+            required
+          />
+        </div>
+        </div>
+        
+        <div className="flex flex-row space-x-8">
+        <div>
+          <label htmlFor="email" className="block font-bold mb-2 text-[#5C5E62] font-sans">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className=" border rounded-md py-2 px-14 bg-[#F4F4F4]" 
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phoneNumber" className="block font-bold mb-2 text-[#5C5E62] font-sans">Phone Number</label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            className=" border rounded-md py-2 px-14 bg-[#F4F4F4]"
+            placeholder="+91 123456789"
+            required
+          />
+        </div>
         </div>
 
-        <div
-          className={
-            nav
-              ? " absolute right-0 top-0 w-80 h-full z-10"
-              : "fixed right-[-100%]"
-          }
-        >
-
-<div className="flex justify-end pr-8 pt-8 w-auto  bg-white ">
-            <TfiClose onClick={handleNav} className="rounded p-1 hover:bg-black/5" size={28} />
-          </div>
-
-          <ul className="flex flex-col justify-center hover:cursor-pointer w-auto bg-white">
-            {navItems.map((item, index) => (
-              <li key={index} className="py-1 px-3 hover:rounded hover:bg-black/5">
-                {item.label}
-              </li>
-            ))}
-          </ul>
+        <div>
+          <p className="text-sm font-light text-gray-500 py-6">
+          By continuing, I agree to the <Link href="#"><span className="underline" onClick={() => router.push('/Term')}>Terms and Conditions</span></Link> 
+          </p>
+          <button
+            type="submit"
+            className="bg-[#3E61E1] hover:bg-blue-800  text-white font-bold py-2 px-20 rounded mb-6"
+          >
+            Schedule Demo Drive
+          </button>
         </div>
+      </form>
+      <div className="flex space-x-4 py-6 text-sm font-light text-gray-600 mb-1 ml-20">
+        <Link href="#"><p>Tesla © 2024</p></Link>
+        <Link href="#"><p>Privacy & Legal</p></Link>
+        <Link href="#"><p>Contact</p></Link>
+        <Link href="#"><p>Careers</p></Link>
+        <Link href="#"><p>Get Newsletter</p></Link>
+        <Link href="#"><p>Locations</p></Link>
       </div>
-
-      <div className="flex flex-col items-center justify-center text-sm lg:flex-row absolute inset-x-0 bottom-[18%]">
-        
-        <Link href="ModelY">
-        <button className="rounded-md  bg-[#f4f4f4] w-96 lg:w-64 h-10 lg:mx-4 mt-2 text-black font-semibold" onClick={() => router.push('/ModelY')}>
-            Order Now
-          </button>
-        </Link>  
-        
-        
-          <button className="rounded-md bg-[#171A20A6] text-white w-96 lg:w-64 h-10 lg:mx-4 mt-2" onClick={() => router.push('/DemoDrive')}>
-            Demo Drive
-          </button>
-        
-      </div>
-
-      <p className="absolute bottom-20 font-light text-sm left-1/3">*Price before incentives is $44,990, excluding taxes and fees. Subject to change.</p>
-      <Link href="/">
-         <p className="absolute bottom-16 font-light text-sm left-1/2 -ml-20 underline underline-offset-4 ">Learn about est. gas savings.</p>
-      </Link>
     </div>
-  );
-};
+    </div>
 
-export default Hero;
+      
+        
+
+    </div>
+    </div>
+  )
+}
+
+export default DemoDrive3
