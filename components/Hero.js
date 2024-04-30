@@ -8,10 +8,10 @@ import { IoMdContact } from "react-icons/io";
 
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from 'next/navigation';
-import todoImage from "../public/model-s.jpg";
-import calendarImage from  "../public/model-x.jpg";
-import remindersImage from   "../public/model-y.jpg";
-import planningImage from  "../public/model-4.jpg";
+import modelsImage from "../public/model-s.jpg";
+import modelxImage from  "../public/model-x.jpg";
+import modelyImage from   "../public/model-y.jpg";
+import model3Image from  "../public/model-4.jpg";
 
 
 const navItems = [
@@ -22,22 +22,22 @@ const navItems = [
       {
         label: "Model S",
         link: "#",
-        iconImage:todoImage
+        iconImage:modelsImage
       },
       {
         label: "Model X",
         link: "#",
-        iconImage: calendarImage
+        iconImage: modelxImage
       },
       {
         label: "Model Y",
         link: "#",
-        iconImage:remindersImage
+        iconImage:modelxImage
       },
       {
         label: "Model 3",
         link: "#",
-        iconImage: planningImage
+        iconImage: model3Image
       }
     ]
   },
@@ -152,7 +152,7 @@ const Hero = () => {
 
   return (
     <div>
-      <div className="absolute top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm">
+      <div className="absolute top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm font-GothamSSm">
         <div>
           <Link href="https://www.tesla.com/">
             <Image
@@ -165,17 +165,17 @@ const Hero = () => {
           </Link>
         </div>
         <div className="hidden lg:inline ">
-          <ul className="relative flex justify-center left-6 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
+          <ul className="relative z-50 flex justify-center left-6 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="relative py-1 px-4 hover:rounded hover:bg-black/5"
-                onMouseEnter={() => toggleMenu(index)}
-                onMouseLeave={() => toggleMenu(null)}
+                className=" relative z-50 py-1 px-4 hover:rounded "
+                // onMouseEnter={() => toggleMenu(index)}
+                // onMouseLeave={() => toggleMenu(null)}
               >
                 {item.label}
                 {index === isOpen && isOpen !== null && (
-                  <div className="absolute flex top-full w-auto mt-2 bg-white border border-gray-200 rounded shadow-md">
+                  <div className="fixed top-0 flex w-screen left-0 right-0 z-10 mt-2 bg-blue-100 border border-gray-200 rounded shadow-md">
                     <ul className="">
                       {item.children && item.children.map((child, childIndex) => (
                         <li key={childIndex} className="px-4 py-2">
@@ -213,7 +213,7 @@ const Hero = () => {
                </li>
             </Link>
             
-            <Link href="/">
+            <Link href="/SignIn">
                <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <IoMdContact className="w-6 h-6" /> 
                </li>
@@ -223,7 +223,7 @@ const Hero = () => {
         </div>
 
   <div className="absolute top-40 left-2/4 transform -translate-x-1/2 -translate-y-1/2">
-  <h1 className="text-5xl font-light p-2 ml-8">Model Y</h1>
+  <h1 className="font-GothamSSm-Book_Weeb.woff2 text-4xl font-bold p-2 px-4 ml-8">Model Y</h1>
   <h3 className="text-2xl font-semibold ml-10 text-ellipsis">From $29,490*</h3>
   <p className="font-light text-sm">After Federal Tax Credit & Est. Gas Savings</p>
 </div>

@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { PiGlobeLight } from "react-icons/pi";
 import { useState } from 'react';
 import { Check } from 'react-feather';
-
+import Modal from "../components/Modal";
 
   
 
 const ModelY = () => {
 
-  const [isButton1Active, setIsButton1Active] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
-  const handleButtonClick = () => {
-    setIsButton1Active(!isButton1Active);
+  const handleToggle = () => {
+    setIsToggled(!isToggled);
   };
+
+  const [showModal , setShowModal] = useState(false);
 
 
 
@@ -58,10 +60,16 @@ const ModelY = () => {
       </div>
 
   <div className="flex justify-between mt-4">
-    <button className="text-[#5C5E62] hover:underline" onClick={handleButtonClick}>Cash</button>
+    <button className="text-[#5C5E62] hover:underline" >Cash</button>
     <div className="text-left absolute top-52 ">
     Include gas savings of $100 /mo. <br/> 
     <span className="underline  cursor-pointer hover:underline-offset-2 ">Customize</span>
+    <button
+      className={`relative w-10 h-5 ml-72  bg-gray-300 rounded-full focus:outline-none transition-colors duration-300 ${isToggled ? 'bg-blue-500' : 'bg-gray-300'}`}
+      onClick={handleToggle}
+    >
+      <span className={`absolute inset-y-0 left-0 flex items-center  justify-center w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${isToggled ? 'translate-x-full' : ''}`} />
+    </button>
     </div>
  
     <div className="absolute top-72 ">
@@ -85,12 +93,16 @@ const ModelY = () => {
     
     
 
-    <button className="text-[#5C5E62] hover:underline" onClick={handleButtonClick}>Lease</button>
-    <button className="text-[#5C5E62] hover:underline" onClick={handleButtonClick}>Finance</button>
+    <button className="text-[#5C5E62] hover:underline" >Lease</button>
+    <button className="text-[#5C5E62] hover:underline" >Finance</button>
   </div>
   <hr className="border-t-2 border-black" />
+      {/* custom modal */}
+      <Fragment>
+      <button className="relative top-[440px] bg-gray-100 hover:bg-[#eeeff1]  px-6 rounded  transition delay-200 duration-200 ease-in-out" onClick={() => setShowModal(true)}>Feature Detail</button>
+      </Fragment>
       
-      <button className="relative top-[440px] bg-gray-100 hover:bg-[#eeeff1]  px-6 rounded  transition delay-200 duration-200 ease-in-out">Feature Detail</button>
+      
 
       <div className="relative top-[500px]">
        <p className="text-2xl font-semibold mb-7">Paint</p>
@@ -247,7 +259,43 @@ const ModelY = () => {
     </div>
     
   </div>
-        
+  <Modal isVisible={showModal} onClose={() => setShowModal(false) } >
+    <h3 className ="relative right-32 bottom-4 text-2xl font-semibold">Range and Performance</h3>
+    <div className='flex flex-row'>
+    <div className='relative  right-32 '>
+      <h4 className='font-semibold '>Acceleration 0-60 mph</h4>
+      <p className='text-sm text-[#565E62] py-1'>Rear-Wheel Drive	<span className='relative left-14' >6.6 sec</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Long Range All-Wheel <br/>Drive<span className='relative left-32  -top-2'>	4.8 sec</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Performance All-Wheel <br/>Drive <span className='relative left-32 -top-2 '>3.5 sec</span></p>
+    </div>
+    <div className='relative  '>
+    <h4 className='font-semibold '>Range</h4>
+      <p className='text-sm text-[#565E62] py-1'>Rear-Wheel Drive	<span className='relative left-14' >	242 - 260 miles</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Long Range All-Wheel <br/>Drive<span className='relative left-32  -top-2'>	292 - 310 miles</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Performance All-Wheel <br/>Drive <span className='relative left-32 -top-2 '>279 miles</span></p>
+      <p className='text-sm text-[#565E62]'>Range varies with wheel selection and is reflected <br/> under each option</p>
+    </div>
+    </div>
+
+    <div className='flex flex-row mt-4'>
+    <div className='relative  right-32 '>
+      <h4 className='font-semibold '>Top Speed</h4>
+      <p className='text-sm text-[#565E62] py-1'>Rear-Wheel Drive	<span className='relative left-14' >	135 mph</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Long Range All-Wheel <br/>Drive<span className='relative left-32  -top-2'>	135 mph</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Performance All-Wheel <br/>Drive <span className='relative left-32 -top-2 '>279 miles</span></p>
+    </div>
+    <div className='relative   '>
+    <h4 className='font-semibold '>Drivetrain</h4>
+      <p className='text-sm text-[#565E62] py-1'>Rear-Wheel Drive<span className='relative left-12' >	Rear-Wheel Drive</span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Long Range All-Wheel <br/>Drive<span className='relative left-32 -top-5'>Dual Motor All-Wheel <br/> <span className='relative left-8'>Drive</span></span></p>
+      <p className='text-sm text-[#565E62] py-1 text-left'>Performance All-Wheel <br/>Drive <span className='relative left-32 -top-5 '>Dual Motor All-Wheel <br/><span className='relative left-9'>Drive</span></span></p>
+    </div>
+    </div>
+    
+    <div></div>
+    <div></div>
+    <div></div>
+  </Modal>
     </div>
   )
 }
