@@ -17,28 +17,58 @@ import model3Image from  "../public/model-4.jpg";
 const navItems = [
   {
     label: "Vehicles",
+    label1:"Vehicles",
+    button:"button",
     link: "#",
     children: [
       {
         label: "Model S",
+        label1:"Inventory",
+        button:"Learn",
+        button2:"More",
         link: "#",
         iconImage:modelsImage
       },
       {
         label: "Model X",
+        label1:"Used Cars",
+        button:"Learn",
+        button2:"More",
         link: "#",
         iconImage: modelxImage
       },
       {
         label: "Model Y",
+        label1:"Demo Drive",
+        button:"Learn",
+        button2:"More",
         link: "#",
         iconImage:modelxImage
       },
       {
         label: "Model 3",
+        label1:"Trade In",
+        button:"Learn",
+        button2:"More",
         link: "#",
         iconImage: model3Image
-      }
+      },
+      {
+        
+        label1:"Demo Drive",
+       
+      },
+      {
+        
+        label1:"Demo Drive",
+        
+      },
+      {
+       
+        label1:"Demo Drive",
+        
+        
+      },
     ]
   },
   {
@@ -47,19 +77,32 @@ const navItems = [
     children: [
       {
         label: "Solar panel",
+        label1:"Schedule a Consultation",
         link: "#"
       },
       {
         label: "Solar roof",
+        label1:"Why Solar",
         link: "#"
       },
       {
         label: "Powerwall",
+        label1:"Incentives",
         link: "#"
       },
       {
         label: "Megapack",
+        label1:"Support",
         link: "#"
+      },
+      {
+        label1:"Partner With Tesla"
+      },
+      {
+        label1:"Commercial"
+      },
+      {
+        label1:"Utilites"
       }
     ]
   },
@@ -69,15 +112,29 @@ const navItems = [
     children: [
       {
         label: "Charging",
+        label1:"Help me charge",
         link: "#"
       },
       {
         label: "Home Charging",
+        label1:"Charging Calculator",
         link: "#"
       },
       {
         label: "Super Charging",
+        label1:"Charging With NACS",
         link: "#"
+      },
+      {
+        label1:"Supercharger Voting"
+      },
+      {
+        label1:"Host a Supercharger"
+      },{
+        label1:"Commercial Charging"
+      },
+      {
+        label1:"Host Wall Connectors"
       }
     ]
   },
@@ -164,36 +221,68 @@ const Hero = () => {
             />
           </Link>
         </div>
+        {navItems.map((item, index) => (
+  <React.Fragment key={index}>
+    {index === isOpen && isOpen !== null && (
+      <div
+        className="absolute -top-2 flex w-full h-[27rem] left-0 right-0 z-10 mt-2 bg-white border border-gray-200 rounded shadow-md"
+        onMouseEnter={() => setIsOpen(index)} // Keep submenu open when mouse enters
+        onMouseLeave={() => setIsOpen(null)}   // Close submenu when mouse leaves
+      >
+        <div className="">
+          <ul className="relative flex top-28 left-40">
+            {item.children && item.children.map((child, childIndex) => (
+              <li key={childIndex} className="px-4 py-4">
+                {child.iconImage && (
+                  <Image
+                    src={child.iconImage}
+                    alt={child.label}
+                    width={100}
+                    height={70}
+                    className="rounded-full"
+                  />
+                )}
+                <span className="relative left-4 text-semibold text-lg">{child.label}</span>
+                {child.button && (
+                  <button className="relative top-8 right-16 px-2 py-1 group-hover:underline rounded mt-3">{child.button}</button>
+                )}
+                {child.button2 && (
+                  <button className="relative top-8 right-16 px-2 py-1 group-hover:underline rounded mt-3">{child.button2}</button>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          {/* Assuming you want to render a list of labels here */}
+          <div className="absolute left-[70rem] top-28">
+            <ul className="">
+              {item.children && item.children.map((child, labelIndex) => (
+                <li key={labelIndex} className="text-gray-600 font-14px py-1 ">
+                  {item.children.some(child => child.label1) && (
+                    <hr className="relative border-b rotate-90 right-28 border-gray-300 w-full  top-4 custom-hr" />
+                  )}
+                  {child.label1}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )}
+  </React.Fragment>
+))}
+
+
         <div className="hidden lg:inline ">
-          <ul className="relative z-50 flex justify-center left-6 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
+          <ul className=" z-40 flex justify-center left-6 hover:cursor-pointer  text-lg font-normal text-[#171A20] ">
             {navItems.map((item, index) => (
               <li
-                key={index}
-                className=" relative z-50 py-1 px-4 hover:rounded "
-                // onMouseEnter={() => toggleMenu(index)}
-                // onMouseLeave={() => toggleMenu(null)}
+                key={item.label}
+                className="  z-50 py-1 px-4 hover:rounded hover:bg-gray-100"
+                onMouseEnter={() => toggleMenu(index)}
+                onMouseLeave={() => toggleMenu(null)}
               >
-                {item.label}
-                {index === isOpen && isOpen !== null && (
-                  <div className="fixed top-0 flex w-screen left-0 right-0 z-10 mt-2 bg-blue-100 border border-gray-200 rounded shadow-md">
-                    <ul className="">
-                      {item.children && item.children.map((child, childIndex) => (
-                        <li key={childIndex} className="px-4 py-2">
-                          {child.iconImage && (
-                            <Image
-                              src={child.iconImage}
-                              alt={child.label}
-                              width={100}
-                              height={70}
-                            />
-                          )}
-
-                          {child.label}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                      {item.label}
               </li>
             ))}
           </ul>
