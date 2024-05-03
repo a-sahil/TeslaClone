@@ -4,7 +4,22 @@ import Image from "next/image";
 import Hero from "../components/Hero";
 import Model3 from "../components/Model3";
 import ModelX from "../components/ModelX";
-
+import Models from "../components/Models";
+import SolarPanel from "../components/SolarPanel";
+import Accessories from "../components/Accessories";
+import { Inter, Roboto_Mono } from 'next/font/google'
+ 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+ 
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
+})
 
 export default function Home() {
   return (
@@ -16,14 +31,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <img src="https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Homepage-Model-Y-Desktop-Global.png" alt="bg-img" className="relative h-screen w-full object-cover" />
-      {/* <Navbar />
-      <Model3 />
-      <ModelX /> */}
        <Hero />
        < Model3 />
        <ModelX />
-      
-      
+      <Models />
+      <SolarPanel />
+      <Accessories />
     </>
   );
 }

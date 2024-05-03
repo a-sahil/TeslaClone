@@ -14,7 +14,8 @@ module.exports = {
       },
       extend: {
         fontFamily: {
-          gotham: ["Gotham.otf" , "sans-serif"],
+          sans: ['var(--font-inter)'],
+          mono: ['var(--font-GothamSSm-mono)'],
         },
       },
     },

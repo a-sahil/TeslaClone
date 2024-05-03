@@ -225,12 +225,12 @@ const Hero = () => {
   <React.Fragment key={index}>
     {index === isOpen && isOpen !== null && (
       <div
-        className="absolute -top-2 flex w-full h-[27rem] left-0 right-0 z-10 mt-2 bg-white border border-gray-200 rounded shadow-md"
-        onMouseEnter={() => setIsOpen(index)} // Keep submenu open when mouse enters
-        onMouseLeave={() => setIsOpen(null)}   // Close submenu when mouse leaves
+        className="absolute -top-2 flex w-full h-[27rem] left-0 right-0 z-10 mt-2 bg-white border border-gray-200 rounded shadow-md transition ease-in duration-700"
+        onMouseEnter={() => setIsOpen(index)} 
+        onMouseLeave={() => setIsOpen(null)}   
       >
         <div className="">
-          <ul className="relative flex top-28 left-40">
+          <ul className="relative flex top-28 left-40 ease-in durration 300">
             {item.children && item.children.map((child, childIndex) => (
               <li key={childIndex} className="px-4 py-4">
                 {child.iconImage && (
@@ -272,13 +272,12 @@ const Hero = () => {
   </React.Fragment>
 ))}
 
-
-        <div className="hidden lg:inline ">
+   <div className="hidden lg:inline ">
           <ul className=" z-40 flex justify-center left-6 hover:cursor-pointer  text-lg font-normal text-[#171A20] ">
             {navItems.map((item, index) => (
               <li
                 key={item.label}
-                className="  z-50 py-1 px-4 hover:rounded hover:bg-gray-100"
+                className="  z-50 py-1 px-4 hover:rounded hover:bg-gray-100 "
                 onMouseEnter={() => toggleMenu(index)}
                 onMouseLeave={() => toggleMenu(null)}
               >
