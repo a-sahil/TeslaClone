@@ -8,36 +8,67 @@ import { IoMdContact } from "react-icons/io";
 
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from 'next/navigation'
-import todoImage from "../public/model-s.jpg";
-import calendarImage from  "../public/model-x.jpg";
-import remindersImage from   "../public/model-y.jpg";
-import planningImage from  "../public/model-4.jpg";
+import modelsImage from "../public/model-s.jpg";
+import modelxImage from  "../public/model-x.jpg";
+import modelyImage from   "../public/model-y.jpg";
+import model3Image from  "../public/model-4.jpg";
+
 
 const navItems = [
   {
     label: "Vehicles",
+    label1:"Vehicles",
+    button:"button",
     link: "#",
     children: [
       {
         label: "Model S",
+        label1:"Inventory",
+        button:"Learn",
+        button2:"More",
         link: "#",
-        iconImage:todoImage
+        iconImage:modelsImage
       },
       {
         label: "Model X",
+        label1:"Used Cars",
+        button:"Learn",
+        button2:"More",
         link: "#",
-        iconImage: calendarImage
+        iconImage: modelxImage
       },
       {
         label: "Model Y",
+        label1:"Demo Drive",
+        button:"Learn",
+        button2:"More",
         link: "#",
-        iconImage:remindersImage
+        iconImage:modelxImage
       },
       {
         label: "Model 3",
+        label1:"Trade In",
+        button:"Learn",
+        button2:"More",
         link: "#",
-        iconImage: planningImage
-      }
+        iconImage: model3Image
+      },
+      {
+        
+        label1:"Demo Drive",
+       
+      },
+      {
+        
+        label1:"Demo Drive",
+        
+      },
+      {
+       
+        label1:"Demo Drive",
+        
+        
+      },
     ]
   },
   {
@@ -46,19 +77,32 @@ const navItems = [
     children: [
       {
         label: "Solar panel",
+        label1:"Schedule a Consultation",
         link: "#"
       },
       {
         label: "Solar roof",
+        label1:"Why Solar",
         link: "#"
       },
       {
         label: "Powerwall",
+        label1:"Incentives",
         link: "#"
       },
       {
         label: "Megapack",
+        label1:"Support",
         link: "#"
+      },
+      {
+        label1:"Partner With Tesla"
+      },
+      {
+        label1:"Commercial"
+      },
+      {
+        label1:"Utilites"
       }
     ]
   },
@@ -68,15 +112,29 @@ const navItems = [
     children: [
       {
         label: "Charging",
+        label1:"Help me charge",
         link: "#"
       },
       {
         label: "Home Charging",
+        label1:"Charging Calculator",
         link: "#"
       },
       {
         label: "Super Charging",
+        label1:"Charging With NACS",
         link: "#"
+      },
+      {
+        label1:"Supercharger Voting"
+      },
+      {
+        label1:"Host a Supercharger"
+      },{
+        label1:"Commercial Charging"
+      },
+      {
+        label1:"Host Wall Connectors"
       }
     ]
   },
@@ -134,6 +192,7 @@ const navItems = [
   }
 ];
 
+
 const DemoDrive = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(null);
@@ -141,11 +200,16 @@ const DemoDrive = () => {
   const toggleMenu = (index) => {
     setIsOpen(isOpen === index ? null : index);
   };
+
+  const [nav, setNav] = useState(false);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
   return (
-    
-      <div>
-        {/* for Navbar */}
-        <div className=" top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm">
+    <div>
+      <div className="absolute top-0 left-0 right-0 flex justify-between items-center font-bold px-12 p-4 text-sm font-GothamSSm">
         <div>
           <Link href="https://www.tesla.com/">
             <Image
@@ -157,43 +221,74 @@ const DemoDrive = () => {
             />
           </Link>
         </div>
-        <div className="hidden lg:inline ">
-          <ul className="relative flex justify-center left-48 hover:cursor-pointer text-lg font-normal text-[#171A20] ">
+        {navItems.map((item, index) => (
+  <React.Fragment key={index}>
+    {index === isOpen && isOpen !== null && (
+      <div
+        className="absolute -top-2 flex w-full h-[27rem] left-0 right-0 z-10 mt-2 bg-white border border-gray-200 rounded shadow-md transition ease-in duration-700"
+        onMouseEnter={() => setIsOpen(index)} 
+        onMouseLeave={() => setIsOpen(null)}   
+      >
+        <div className="">
+          <ul className="relative flex top-28 left-40 ease-in durration 300">
+            {item.children && item.children.map((child, childIndex) => (
+              <li key={childIndex} className="px-4 py-4">
+                {child.iconImage && (
+                  <Image
+                    src={child.iconImage}
+                    alt={child.label}
+                    width={100}
+                    height={70}
+                    className="rounded-full"
+                  />
+                )}
+                <span className="relative left-4 text-semibold text-lg">{child.label}</span>
+                {child.button && (
+                  <button className="relative top-8 right-16 px-2 py-1 group-hover:underline rounded mt-3">{child.button}</button>
+                )}
+                {child.button2 && (
+                  <button className="relative top-8 right-16 px-2 py-1 group-hover:underline rounded mt-3">{child.button2}</button>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          {/* Assuming you want to render a list of labels here */}
+          <div className="absolute left-[70rem] top-28">
+            <ul className="">
+              {item.children && item.children.map((child, labelIndex) => (
+                <li key={labelIndex} className="text-gray-600 font-14px py-1 ">
+                  {item.children.some(child => child.label1) && (
+                    <hr className="relative border-b rotate-90 right-28 border-gray-300 w-full  top-4 custom-hr" />
+                  )}
+                  {child.label1}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )}
+  </React.Fragment>
+))}
+
+   <div className="hidden lg:inline relative left-48">
+          <ul className=" z-40 flex justify-center left-6 hover:cursor-pointer  text-lg font-normal text-[#171A20] ">
             {navItems.map((item, index) => (
               <li
-                key={index}
-                className="relative py-1 px-3 hover:rounded hover:bg-black/5"
+                key={item.label}
+                className="  z-50 py-1 px-4 hover:rounded hover:bg-gray-100 "
                 onMouseEnter={() => toggleMenu(index)}
                 onMouseLeave={() => toggleMenu(null)}
               >
-                {item.label}
-                {index === isOpen && isOpen !== null && (
-                  <div className="absolute flex top-full w-auto mt-2 bg-white border border-gray-200 rounded shadow-md">
-                    <ul className="">
-                      {item.children && item.children.map((child, childIndex) => (
-                        <li key={childIndex} className="px-4 py-2">
-                          {child.iconImage && (
-                            <Image
-                              src={child.iconImage}
-                              alt={child.label}
-                              width={100}
-                              height={70}
-                            />
-                          )}
-
-                          {child.label}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                      {item.label}
               </li>
             ))}
           </ul>
         </div>
 
         <div className="hidden lg:inline">
-          <ul className="flex justify-center relative left-[27rem] hover:cursor-pointer">
+          <ul className="flex justify-center relative left-[23rem] hover:cursor-pointer">
             <Link href="/">
               <li className="py-1 px-2 hover:rounded hover:bg-black/5">
               <RxQuestionMarkCircled className="w-6 h-6" />
@@ -218,7 +313,7 @@ const DemoDrive = () => {
     
 
     <div>
-      <div className="absolute top-[16%] left-[28%]">
+      <div className="absolute top-[150%] left-[28%]">
       <h1 className="text-4xl font-semibold ">Demo Drive Model Y</h1>
       <p className="text-light pb-4 pt-4">Experience Full Self-Driving (Supervised), Learn About Charging and Get All Your 
       Questions Answered
@@ -227,7 +322,7 @@ const DemoDrive = () => {
       <p>Zip Code: Enter Zip Code</p>
       </div>
       
-    <div className= "absolute top-[50%] left-[28%] ">
+    <div className= "absolute top-[500%] left-[28%] ">
       <h1 className="text-3xl font-bold  text-gray-800 mb-4 ">Contact Information</h1>
       <form  className="space-y-6 ">
         <div className="flex flex-row space-x-8">

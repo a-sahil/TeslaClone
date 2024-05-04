@@ -4,7 +4,7 @@ import Image from "next/image";
 import Hero from "../components/Hero";
 import Model3 from "../components/Model3";
 import ModelX from "../components/ModelX";
-import Models from "../components/Models";
+import ModelS from "../components/ModelS";
 import SolarPanel from "../components/SolarPanel";
 import Accessories from "../components/Accessories";
 import { Inter, Roboto_Mono } from 'next/font/google'
@@ -34,9 +34,9 @@ export default function Home() {
        <Hero />
        < Model3 />
        <ModelX />
-      <Models />
-      <SolarPanel />
-      <Accessories />
+       <ModelS />
+       <SolarPanel />
+       <Accessories />
     </>
   );
 }
